@@ -5,6 +5,9 @@ ENV JIRA_HOME     /var/atlassian/jira
 ENV JIRA_INSTALL  /opt/atlassian/jira
 ENV JIRA_VERSION  8.0.2
 
+COPY "atlassian-agent.jar" "/"
+ENV JAVA_OPTS "-javaagent:/atlassian-agent.jar ${JAVA_OPTS}"
+
 # Install Atlassian JIRA and helper tools and setup initial home
 # directory structure.
 RUN set -x \
